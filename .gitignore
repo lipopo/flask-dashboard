@@ -1,0 +1,10 @@
+path.tick
+
+# runtime file
+*.pyc
+
+# built file
+*.egg-info/
+
+# virtual env
+venv/

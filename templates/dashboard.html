@@ -1,0 +1,53 @@
+<html>
+    <head>
+        <title>FlaskDashboard</title>
+        <!-- <link> -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
+    </head>
+    <body style="padding:0px;margin:0px;">
+        <div 
+        style="
+        height: 100vh;
+        width: 100vw;
+        background: #555;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        ">
+            <div id="header">
+                <h3 style="color:#eee;">
+                    Path Count
+                </h3>
+            </div>
+            <div id="boards" style="width: 70vw;height: 70vh;">
+                <canvas id="path_dashboard">
+                </canvas>
+                <script>
+                    var ctx = document.getElementById("path_dashboard").getContext("2d");
+                    var myChart = new Chart(ctx, {
+                        type: 'bar',
+                        data: {
+                            labels: {{ path|safe }},
+                            datasets: [{
+                                data: {{ count }},
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            legend: false,
+                            scales: {
+                                yAxes: [{
+                                    ticks: {
+                                        beginAtZero: true
+                                    }
+                                }]
+                            }
+                        }
+                    });
+                </script>
+            </div>
+        </div>
+    </body>
+</html>
